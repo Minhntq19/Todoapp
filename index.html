@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="./style.css" />
+		<link rel="stylesheet" href="./fontawesome-free-6.1.1-web/css/all.css" />
+		<title>ToDoApp</title>
+	</head>
+	<body>
+		<div id="app">
+			<div id="menu">
+				<div class="main-menu">
+					<div class="name">
+						<i class="fa-solid fa-check"> Todo list</i>
+					</div>
+					<div class="today__task">
+						<p>Important task</p>
+						<i class="fa-solid fa-angle-down btn"></i>
+						<i class="fa-solid fa-angle-right btn hide"></i>
+					</div>
+					<div class="custom__task">
+						<p>Assigned task</p>
+						<i class="fa-solid fa-angle-down btn"></i>
+						<i class="fa-solid fa-angle-right btn hide"></i>
+					</div>
+					<div class="custom__task none__border">
+						<p>Done task</p>
+						<input type="checkbox" />
+					</div>
+					<div class="custom__task none__border">
+						<p>Pending task</p>
+						<input type="checkbox" />
+					</div>
+					<div class="add__task">
+						<i class="fa-thin fa-plus"></i>
+					</div>
+				</div>
+			</div>
+			<div id="task">
+				<div class="vmenu">
+					<div class="more">
+						<i class="fa-solid fa-ellipsis"></i>
+					</div>
+					<div class="info">
+						<div class="p">
+							<h3 class="fullname">Minh</h3>
+							<p class="description">Web developer</p>
+						</div>
+						<div class="avatar">
+							<img src="./download.png" alt="" width="40px" />
+						</div>
+					</div>
+				</div>
+				<div class="task__todo">
+					<div class="input">
+						<input class="input__text" type="text" placeholder="Add a task" />
+						<button type="submit" class="btn"><i class="fa-solid fa-plus"></i></button>
+					</div>
+					<div class="todo__list">
+						<ul class="list">
+							<!-- <li class="list__task">
+								<input type="checkbox" checked />
+								<div class="task__content">Swimming</div>
+								<i class="fa-solid fa-pen-to-square"></i>
+								<i class="fa-solid fa-trash-can"></i>
+							</li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./app.js"></script>
+	</body>
+</html>
