@@ -7,6 +7,9 @@
 .done {
 	text-decoration: line-through !important;
 }
+.hide {
+	display: none !important;
+}
 html {
 	background-color: #e5e5e5;
 }
@@ -204,8 +207,8 @@ html {
 	cursor: pointer;
 	opacity: 1;
 }
-.list__task input {
-	color: #000;
+.list__task input:checked {
+	color: rgb(52, 200, 62);
 }
 .list__task i {
 	align-self: center;
