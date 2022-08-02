@@ -2,6 +2,8 @@
 const btnS = document.querySelector('button');
 const taskInput = document.querySelector('.input__text');
 const list = document.querySelector('.list');
+const showBtn = document.querySelector('.show__done');
+const hideBtn = document.querySelector('.show__pending');
 let i = 0;
 //render
 const app = {
@@ -10,7 +12,7 @@ const app = {
 		i = ++i;
 		const newLi = document.createElement('li');
 		if (app.checker) {
-			newLi.classList.add('list__task', 'hide');
+			newLi.classList.add('list__task', 'hide', 'fade');
 		} else {
 			newLi.classList.add('list__task');
 		}
@@ -28,7 +30,6 @@ const app = {
 		newDelete.classList.add('fa-solid', 'fa-trash-can');
 		newLi.append(checkbox, newDiv, newEdit, newDelete);
 		list.appendChild(newLi);
-		console.log(app.checker);
 	},
 	add: () => {
 		//click add
@@ -55,9 +56,22 @@ const app = {
 			const child3 = parents.children;
 			if (child2) {
 				if (child2.checked) {
-					parents.classList.add('done');
+					if (!hideBtn.checked) {
+						parents.classList.add('done');
+					} else if (hideBtn.checked && showBtn.checked) {
+						parents.classList.add('done');
+					} else {
+						parents.classList.add('done', 'hide', 'fade');
+					}
 				} else {
-					parents.classList.remove('done');
+					if (!showBtn.checked) {
+						parents.classList.remove('done');
+					} else if (hideBtn.checked && showBtn.checked) {
+						parents.classList.remove('done');
+					} else {
+						parents.classList.remove('done');
+						parents.classList.add('hide', 'fade');
+					}
 				}
 			}
 			if (child1) {
@@ -72,26 +86,31 @@ const app = {
 		};
 	},
 	showDone: () => {
-		const showBtn = document.querySelector('.show__done');
 		showBtn.onclick = (e) => {
-			app.hidePending();
+			if (hideBtn.checked) {
+				app.hideDone();
+			} else {
+				app.hidePending();
+			}
 			const showChild = e.target.closest('input');
 			app.checker = showChild.checked;
 		};
 	},
 	showPending: () => {
-		const hideBtn = document.querySelector('.show__pending');
 		hideBtn.onclick = () => {
-			app.hideDone();
+			if (showBtn.checked) {
+				app.hidePending();
+			} else {
+				app.hideDone();
+			}
+			console.log(hideBtn.checked);
 		};
 	},
 	hideDone: () => {
 		const listTask = document.querySelectorAll('.done');
 		listTask.forEach((value) => {
 			value.classList.toggle('fade');
-			setTimeout((e) => {
-				value.classList.toggle('hide');
-			}, 300);
+			value.classList.toggle('hide');
 		});
 	},
 	hidePending: () => {
@@ -104,9 +123,7 @@ const app = {
 		}
 		listPending.forEach((value) => {
 			value.classList.toggle('fade');
-			setTimeout((e) => {
-				value.classList.toggle('hide');
-			}, 300);
+			value.classList.toggle('hide');
 		});
 	},
 	edit: () => {},
